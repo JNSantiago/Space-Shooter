@@ -1,14 +1,34 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://scripts/ship.gd" type="Script" id=1]
 [ext_resource path="res://sprites/playerShip1_blue.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Parts/gun09.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Parts/gun10.png" type="Texture" id=4]
 
 [node name="ship" type="Node2D"]
 
 script/script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="sprite" type="Sprite" parent="."]
 
 texture = ExtResource( 2 )
+
+[node name="left_cannon" type="Sprite" parent="."]
+
+transform/pos = Vector2( -25.8467, 8.77814 )
+texture = ExtResource( 3 )
+
+[node name="right_cannon" type="Sprite" parent="."]
+
+transform/pos = Vector2( 25.8467, 8.77814 )
+texture = ExtResource( 4 )
+
+[node name="pos_cannon_left" type="Position2D" parent="."]
+
+transform/pos = Vector2( -25.8467, -27.0686 )
+
+[node name="pos_cannon_right" type="Position2D" parent="."]
+
+transform/pos = Vector2( 25.8467, -27.0686 )
 
 

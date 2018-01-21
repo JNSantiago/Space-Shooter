@@ -25,17 +25,22 @@ func _process(delta):
 	if get_pos().x < (50):
 		left = 0
 	
-	set_pos(get_pos() + (Vector2(velocity, 0) * delta * (right + left)))
+	set_pos(get_pos() + (Vector2(1, 0) * velocity * delta * (right + left)))
 	
 	# dispatch
 	if Input.is_action_pressed("shot"):
 		if last_shot <= 0:
-			var shot = before_shot.instance()
-			shot.set_global_pos(get_global_pos())
-			get_node("../").add_child(shot)
+			shot(get_node("left_cannon"))
+			shot(get_node("right_cannon"))
 			last_shot = interval
 		pass
 	
 	if last_shot > 0:
 		last_shot -= delta
+	pass
+	
+func shot(node):
+	var shot_cannon_left = before_shot.instance()
+	shot_cannon_left.set_global_pos(node.get_global_pos())
+	get_owner().add_child(shot_cannon_left)
 	pass
