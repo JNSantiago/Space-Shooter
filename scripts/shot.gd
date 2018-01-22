@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 var velocity = 500
 
@@ -12,5 +12,13 @@ func _process(delta):
 	if get_pos().y < -30:
 		queue_free()
 		pass
-	
+	pass
+
+func _on_shot_area_enter(area):
+	if area.is_in_group(game.ENEMY_GROUP):
+		if area.has_method("apply_damage"):
+			area.apply_damage(1)
+		else:
+			area.queue_free()
+		pass
 	pass
